@@ -1,0 +1,29 @@
+{{input type="text" id="new-event" placeholder="Whats the name of the event?" value=newTitle action="createEvent"}}
+
+<section class="events">
+  <div class="outer-container">
+
+    {{#each}}
+
+    <div class="event">
+      <div class="hover-tile-outer">
+      <div class="event-header">{{location}}</div>
+        <div class="hover-tile-container" style="background: url('danceoff.jpg'); background-position: top; background-size: cover">
+          <div class="hover-tile hover-tile-visible">
+            <span class="title">{{title}}</span><br><br>
+            <span class="date">{{date}}</span>
+          </div>
+          <div class="hover-tile hover-tile-hidden">
+            <div>
+              <span class="badge-tag">Hip Hop</span>
+              <span class="badge-tag">Workshops</span>
+              <span class="badge-tag">2 vs 2</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+
+  </div>
+</section>
