@@ -3,6 +3,22 @@
 @import "../../bower_components/neat/app/assets/stylesheets/neat";
 @import "refills";
 
+$tablet: new-breakpoint(max-width 900px 12);
+$smartlet: new-breakpoint(max-width 650px 12);
+$mobile: new-breakpoint(max-width 400px 12);
+
+$stateSaxonyColor: blue;
+$stateThuringiaColor: green;
+
+
+.state-SAXONY {
+  background-color: $stateSaxonyColor;
+}
+
+.state-THURINGIA {
+  background-color: $stateThuringiaColor;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -10,7 +26,6 @@ body {
 }
 
 section.events{
-  $event-background: grey;
   background-color: white;
   padding: 8em 0;
 
@@ -19,11 +34,22 @@ section.events{
     .event{
       @include span-columns(3);
       @include omega(4n);
+      @include media($tablet) {
+        @include span-columns(4);
+        @include omega(3n);
+      }
+      @include media($smartlet) {
+        @include span-columns(6);
+        @include omega(2n);
+      }
+      @include media($mobile) {
+        @include span-columns(12);
+        @include omega();
+      }
 
       margin-bottom: 2em;
 
       .event-header{
-        background: orange;
         color: white;
         font-size: 1em;
         padding: 0.3em;
@@ -44,5 +70,80 @@ section.events{
       }
 
     }
+  }
+}
+
+section.create-event{
+  .outer-container {
+    @include outer-container;
+
+    fieldset{
+      margin-top: 3em;
+
+      .name-box{
+        @include span-columns(6);
+        @include media($tablet) {
+          @include span-columns(12);
+          @include omega();
+        }
+      }
+
+      .date-box{
+        @include span-columns(2);
+        @include media($tablet) {
+          @include span-columns(4);
+        }
+        @include media($mobile) {
+          @include span-columns(12);
+        }
+      }
+
+      .city-box{
+        @include span-columns(2);
+        @include media($tablet) {
+          @include span-columns(4);
+        }
+        @include media($mobile) {
+          @include span-columns(6);
+        }
+      }
+
+      .state-box{
+        @include span-columns(2);
+        @include omega();
+        @include media($tablet) {
+          @include span-columns(4);
+          @include omega();
+
+        }
+        @include media($mobile) {
+          @include span-columns(6);
+          @include omega();
+
+        }
+      }
+
+      .create-event{
+        @include fill-parent();
+        @include row(table);
+      }
+    }
+
+    input {
+      margin-bottom: 0;
+      height: 2em;
+    }
+
+    select{
+      margin: 0;
+      width: 100%;
+    }
+
+    .field-description{
+      font-weight: bold;
+      font-size: small;
+      color: grey;
+    }
+
   }
 }

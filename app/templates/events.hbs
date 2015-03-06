@@ -1,29 +1,59 @@
-{{input type="text" id="new-event" placeholder="Whats the name of the event?" value=newTitle action="createEvent"}}
-
 <section class="events">
-  <div class="outer-container">
+    <div class="outer-container">
 
-    {{#each}}
-
-    <div class="event">
-      <div class="hover-tile-outer">
-      <div class="event-header">{{location}}</div>
-        <div class="hover-tile-container" style="background: url('danceoff.jpg'); background-position: top; background-size: cover">
-          <div class="hover-tile hover-tile-visible">
-            <span class="title">{{title}}</span><br><br>
-            <span class="date">{{date}}</span>
-          </div>
-          <div class="hover-tile hover-tile-hidden">
-            <div>
-              <span class="badge-tag">Hip Hop</span>
-              <span class="badge-tag">Workshops</span>
-              <span class="badge-tag">2 vs 2</span>
+        {{#each}}
+            <div class="event">
+                <div class="hover-tile-outer">
+                    {{{get-state city state}}}
+                    <div class="hover-tile-container"
+                         style="background: url('danceoff.jpg'); background-position: top; background-size: cover">
+                        <div class="hover-tile hover-tile-visible">
+                            <span class="title">{{title}}</span><br><br>
+                            <span class="date">{{date}}</span>
+                        </div>
+                        <div class="hover-tile hover-tile-hidden">
+                            <div>
+                                <span class="badge-tag">Hip Hop</span>
+                                <span class="badge-tag">Workshops</span>
+                                <span class="badge-tag">2 vs 2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  {{/each}}
+        {{/each}}
 
-  </div>
+    </div>
 </section>
+
+
+<section class="create-event">
+    <div class="outer-container">
+        <fieldset>
+            <form {{action "createEvent" on="submit"}}>
+                <h1>Heard about an Event? Share it!</h1><br>
+
+                <div class="name-box">
+                    <span class="field-description">Name</span>
+                    {{input type="text" id="title" placeholder="Whats the name of the event?" value=newTitle}}
+                </div>
+                <div class="date-box">
+                    <span class="field-description">Date</span>
+                    {{input type="date" id="date" value=newDate}}
+                </div>
+                <div class="city-box">
+                    <span class="field-description">City</span>
+                    {{input type="text" id="city" value=newCity}}
+                </div>
+                <div class="state-box">
+                    <span class="field-description">State</span>
+                    {{view "select" content=controller.listAllStates optionValuePath="content.key" optionLabelPath="content.value" value=newState}}
+                </div>
+                <div class="create-event">
+                    <button id="create-button" type="submit">Share!</button>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</section>
+
