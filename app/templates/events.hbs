@@ -1,3 +1,16 @@
+<section class="filters">
+    <div class="outer-container">
+        {{#link-to 'events' ''}}
+            All
+        {{/link-to}}
+        {{#each state in controller.listAllStates}}
+            {{#link-to 'events' state.key}}
+                {{state.value}}
+            {{/link-to}}
+        {{/each}}
+    </div>
+</section>
+
 <section class="events">
     <div class="outer-container">
 
@@ -13,9 +26,7 @@
                         </div>
                         <div class="hover-tile hover-tile-hidden">
                             <div>
-                                <span class="badge-tag">Hip Hop</span>
-                                <span class="badge-tag">Workshops</span>
-                                <span class="badge-tag">2 vs 2</span>
+                                {{#each tags}}<span class="badge-tag">{{name}}</span> {{/each}}
                             </div>
                         </div>
                     </div>
@@ -48,6 +59,18 @@
                 <div class="state-box">
                     <span class="field-description">State</span>
                     {{view "select" content=controller.listAllStates optionValuePath="content.key" optionLabelPath="content.value" value=newState}}
+                </div>
+                <div class="tag-row">
+                    <div class="tag-field">
+                        <span class="field-description">Tags</span>
+                        {{input type="text" id="tag" value=newTag}}
+                    </div>
+                    <div class="tag-add">
+                        <button class="tag-add-button" {{action 'addTag'}}>+ add</button>
+                    </div>
+                    <div class="current-tags">
+                        {{#each tag in controller.currentTags}}<span class="badge-tag">{{tag}}</span> {{/each}}
+                    </div>
                 </div>
                 <div class="create-event">
                     <button id="create-button" type="submit">Share!</button>

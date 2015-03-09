@@ -10,7 +10,6 @@ $mobile: new-breakpoint(max-width 400px 12);
 $stateSaxonyColor: blue;
 $stateThuringiaColor: green;
 
-
 .state-SAXONY {
   background-color: $stateSaxonyColor;
 }
@@ -25,13 +24,28 @@ body {
   background-color: $light-gray;
 }
 
-section.events{
-  background-color: white;
-  padding: 8em 0;
-
-  .outer-container{
+section.filters {
+  margin-top: 3em;
+  .outer-container {
     @include outer-container;
-    .event{
+
+    a{
+      @extend .badge-tag;
+      margin: 0.3em;
+    }
+    .active{
+      background-color: darken(white, 10%);
+    }
+  }
+}
+
+section.events {
+  background-color: white;
+  padding: 3em 0;
+
+  .outer-container {
+    @include outer-container;
+    .event {
       @include span-columns(3);
       @include omega(4n);
       @include media($tablet) {
@@ -49,7 +63,7 @@ section.events{
 
       margin-bottom: 2em;
 
-      .event-header{
+      .event-header {
         color: white;
         font-size: 1em;
         padding: 0.3em;
@@ -61,9 +75,9 @@ section.events{
         color: white;
         font-size: 2.4em;
         font-weight: bold;
-        line-height:initial;
+        line-height: initial;
       }
-      .date{
+      .date {
         background: rgba(black, 0.7);
         color: white;
         font-size: 1.5em;
@@ -73,14 +87,17 @@ section.events{
   }
 }
 
-section.create-event{
+section.create-event {
+
+  $field-height: 32px;
+
   .outer-container {
     @include outer-container;
 
-    fieldset{
+    fieldset {
       margin-top: 3em;
 
-      .name-box{
+      .name-box {
         @include span-columns(6);
         @include media($tablet) {
           @include span-columns(12);
@@ -88,7 +105,7 @@ section.create-event{
         }
       }
 
-      .date-box{
+      .date-box {
         @include span-columns(2);
         @include media($tablet) {
           @include span-columns(4);
@@ -98,7 +115,7 @@ section.create-event{
         }
       }
 
-      .city-box{
+      .city-box {
         @include span-columns(2);
         @include media($tablet) {
           @include span-columns(4);
@@ -108,7 +125,7 @@ section.create-event{
         }
       }
 
-      .state-box{
+      .state-box {
         @include span-columns(2);
         @include omega();
         @include media($tablet) {
@@ -123,27 +140,57 @@ section.create-event{
         }
       }
 
-      .create-event{
+      .tag-row {
+
+        .tag-field {
+          @include span-columns(5);
+        }
+        .tag-add {
+          @include span-columns(1);
+          vertical-align: bottom;
+        }
+        .current-tags {
+          @include span-columns(6);
+          @include omega();
+          vertical-align: bottom;
+        }
+
+      }
+
+      .create-event {
         @include fill-parent();
         @include row(table);
       }
-    }
 
-    input {
-      margin-bottom: 0;
-      height: 2em;
     }
-
-    select{
-      margin: 0;
-      width: 100%;
-    }
-
-    .field-description{
-      font-weight: bold;
-      font-size: small;
-      color: grey;
-    }
-
   }
+
+  input {
+    margin-bottom: 0;
+    height: $field-height;
+  }
+
+  select {
+    margin: 0;
+    width: 100%;
+  }
+
+  .field-description {
+    font-weight: bold;
+    font-size: small;
+    color: grey;
+  }
+
+  .badge-tag {
+    border: 1px solid;
+    line-height: $field-height;
+  }
+
+  .tag-add-button {
+    line-height: 6px;
+    background-color: white;
+    border: 1px solid #ddd;
+    color: gray;
+  }
+
 }

@@ -15,6 +15,6 @@ var stateEnum = {
     'SAXONY-ANHALT' : 'Sachsen-Anhalt',
     'SCHLESWIG-HOLSTEIN' : 'Schleswig-Holstein',
     'THURINGIA' : 'Thueringen'
-}
+};
 
 export default stateEnum;
