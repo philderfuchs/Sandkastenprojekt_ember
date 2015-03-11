@@ -3,7 +3,7 @@
         {{#link-to 'events' ''}}
             All
         {{/link-to}}
-        {{#each state in controller.listAllStates}}
+        {{#each state in controller.allStatesAsList}}
             {{#link-to 'events' state.key}}
                 {{state.value}}
             {{/link-to}}
@@ -58,7 +58,7 @@
                 </div>
                 <div class="state-box">
                     <span class="field-description">State</span>
-                    {{view "select" content=controller.listAllStates optionValuePath="content.key" optionLabelPath="content.value" value=newState}}
+                    {{view "select" content=controller.allStatesAsList optionValuePath="content.key" optionLabelPath="content.value" value=newState}}
                 </div>
                 <div class="tag-row">
                     <div class="tag-field">

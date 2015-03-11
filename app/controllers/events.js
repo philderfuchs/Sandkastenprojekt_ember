@@ -3,18 +3,15 @@ import StateEnum from '../models/stateEnum';
 
 export default Ember.ArrayController.extend({
     _newTags: [],
-    listAllStates: (function() {
+    allStatesAsList: (function () {
         var array = [];
         for (var key in StateEnum) {
             array.push({key: key, value: StateEnum[key]});
         }
         return array;
     }).property(),
-    currentTags: function (){
-        /*return this.get('_newTags').map(function (tag) {
-            return tag.get('name');
-        });*/
 
+    currentTags: function () {
         return this.get('_newTags').mapBy('name');
     }.property('_newTags.@each'),
 
@@ -42,7 +39,7 @@ export default Ember.ArrayController.extend({
                 state: state,
                 city: city
             });
-            this._newTags.forEach(function(tag) {
+            this._newTags.forEach(function (tag) {
                 tag.save();
                 newEvent.get('tags').pushObject(tag);
             });
