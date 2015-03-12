@@ -25,9 +25,9 @@ export default Ember.ArrayController.extend({
 
             var date = this.get('newDate');
             if (date) {
-                date = new Date(date).toLocaleDateString();
+                date = new Date(date);
             } else {
-                date = new Date().toLocaleDateString();
+                date = new Date();
             }
 
             var state = this.get('newState');
