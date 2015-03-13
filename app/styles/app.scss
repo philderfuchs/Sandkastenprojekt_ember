@@ -8,22 +8,22 @@ $tablet: new-breakpoint(max-width 900px 12);
 $smartlet: new-breakpoint(max-width 650px 12);
 $mobile: new-breakpoint(max-width 400px 12);
 
-$stateBadenWuerttembergColor: #9C27B0;
-$stateBavariaColor: #F44336;
+$stateBadenWuerttembergColor: #87288F;
+$stateBavariaColor: #A30F37;
 $stateBerlinColor: #607D8B;
-$stateBrandenburgColor: #009688;
+$stateBrandenburgColor: #008E74;
 $stateBremenColor: #4CAF50;
 $stateHamburgColor: #03A9F4;
-$stateHessenColor: #8BC34A;
-$stateNiedersachsenColor: #FF9800;
-$stateMecklenburgVorpommernColor: #795548;
-$stateNordrheinWestfalenColor: #E91E63;
-$stateRheinlandPfalzColor: #607D8B;
+$stateHessenColor: #D2434A;
+$stateNiedersachsenColor: #FFC157;
+$stateMecklenburgVorpommernColor: #40919D;
+$stateNordrheinWestfalenColor: #D31E63;
+$stateRheinlandPfalzColor: #F17140;
 $stateSaarlandColor: #FFC107;
 $stateSachsenAnhaltColor: #C0CA33;
-$stateSaxonyColor: #673AB7;
-$stateSchleswigHolsteinColor: #00BCD4;
-$stateThuringiaColor: #3F51B5;
+$stateSaxonyColor: #08B074;
+$stateSchleswigHolsteinColor: #54BFC3;
+$stateThueringenColor: #61AE5B;
 
 .state-BADEN-WUERTTEMBERG {
   background-color: $stateBadenWuerttembergColor;
@@ -86,7 +86,7 @@ $stateThuringiaColor: #3F51B5;
 }
 
 .state-THURINGIA {
-  background-color: $stateThuringiaColor;
+  background-color: $stateThueringenColor;
 }
 
 body {
@@ -110,52 +110,113 @@ section.filters {
   }
 }
 
-section.events {
+section.view-events {
   background-color: white;
   padding: 3em 0;
 
   .outer-container {
     @include outer-container;
-    .event {
-      @include media($screen) {
-        @include span-columns(3);
-        @include omega(4n);
-      }
-      @include media($tablet) {
-        @include span-columns(4);
-        @include omega(3n);
-      }
+
+    .map {
+      @include span-columns(4);
+
       @include media($smartlet) {
-        @include span-columns(6);
-        @include omega(2n);
-      }
-      @include media($mobile) {
         @include span-columns(12);
-        @include omega();
       }
 
-      margin-bottom: 2em;
-
-      .event-header {
-        color: white;
-        font-size: 1em;
-        padding: 0.3em;
-        font-weight: bold;
+      .state {
+        &:hover {
+          opacity: 0.3;
+          cursor: pointer;
+        }
       }
 
-      .title {
-        background: rgba(black, 0.7);
-        color: white;
-        font-size: 2.4em;
-        font-weight: bold;
-        line-height: initial;
+      .sachsen {
+        fill: $stateSaxonyColor;
       }
-      .date {
-        background: rgba(black, 0.7);
-        color: white;
-        font-size: 1.5em;
+      .schleswig-holstein {
+        fill: $stateSchleswigHolsteinColor;
+      }
+      .brandenburg {
+        fill: $stateBrandenburgColor;
+      }
+      .sachsen-anhalt {
+        fill: $stateSachsenAnhaltColor;
+      }
+      .mecklenburg-vorpommern {
+        fill: $stateMecklenburgVorpommernColor;
+      }
+      .thueringen {
+        fill: $stateThueringenColor;
+      }
+      .niedersachsen {
+        fill: $stateNiedersachsenColor;
+      }
+      .nordrhein-westfalen {
+        fill: $stateNordrheinWestfalenColor;
+      }
+      .hessen {
+        fill: $stateHessenColor;
+      }
+      .rheinland-pfalz {
+        fill: $stateRheinlandPfalzColor;
+      }
+      .saarland {
+        fill: $stateSaarlandColor;
+      }
+      .bayern {
+        fill: $stateBavariaColor;
+      }
+      .baden-wuerttemberg {
+        fill: $stateBadenWuerttembergColor;
+      }
+    }
+
+    .events {
+      @include span-columns(8);
+
+      @include media($smartlet) {
+        @include span-columns(12);
       }
 
+      .event {
+        @include media($screen) {
+          @include span-columns(4);
+          @include omega(3n);
+        }
+        @include media($tablet) {
+          @include span-columns(6);
+          @include omega(2n);
+        }
+
+        @include media($mobile) {
+          @include span-columns(12);
+          @include omega();
+        }
+
+        margin-bottom: 2em;
+
+        .event-header {
+          line-height: 1.3em;
+          text-align: right;
+          color: white;
+          font-size: 1em;
+          padding: 0.3em 0.6em;
+        }
+
+        .title {
+          background: rgba(black, 0.7);
+          color: white;
+          font-size: 2em;
+          font-weight: bold;
+          line-height: initial;
+        }
+        .date {
+          background: rgba(black, 0.7);
+          color: white;
+          font-size: 1em;
+        }
+      }
     }
   }
 }
