@@ -3,15 +3,86 @@
 @import "../../bower_components/neat/app/assets/stylesheets/neat";
 @import "refills";
 
+$screen: new-breakpoint(min-width 900px 12);
 $tablet: new-breakpoint(max-width 900px 12);
 $smartlet: new-breakpoint(max-width 650px 12);
 $mobile: new-breakpoint(max-width 400px 12);
 
-$stateSaxonyColor: blue;
-$stateThuringiaColor: green;
+$stateBadenWuerttembergColor: #9C27B0;
+$stateBavariaColor: #F44336;
+$stateBerlinColor: #607D8B;
+$stateBrandenburgColor: #009688;
+$stateBremenColor: #4CAF50;
+$stateHamburgColor: #03A9F4;
+$stateHessenColor: #8BC34A;
+$stateNiedersachsenColor: #FF9800;
+$stateMecklenburgVorpommernColor: #795548;
+$stateNordrheinWestfalenColor: #E91E63;
+$stateRheinlandPfalzColor: #607D8B;
+$stateSaarlandColor: #FFC107;
+$stateSachsenAnhaltColor: #C0CA33;
+$stateSaxonyColor: #673AB7;
+$stateSchleswigHolsteinColor: #00BCD4;
+$stateThuringiaColor: #3F51B5;
+
+.state-BADEN-WUERTTEMBERG {
+  background-color: $stateBadenWuerttembergColor;
+}
+
+.state-BAVARIA {
+  background-color: $stateBavariaColor;
+}
+
+.state-BERLIN {
+  background-color: $stateBerlinColor;
+}
+
+.state-BRANDENBURG {
+  background-color: $stateBrandenburgColor;
+}
+
+.state-BREMEN {
+  background-color: $stateBremenColor;
+}
+
+.state-HAMBURG {
+  background-color: $stateHamburgColor;
+}
+
+.state-HESSE {
+  background-color: $stateHessenColor;
+}
+
+.state-LOWERSAXONY {
+  background-color: $stateNiedersachsenColor;
+}
+
+.state-MECKELNBURG-VORPOMMERN {
+  background-color: $stateMecklenburgVorpommernColor;
+}
+
+.state-NORTHRHINE-WESTPHALIA {
+  background-color: $stateNordrheinWestfalenColor;
+}
+
+.state-RHINELAND-PALATINATE {
+  background-color: $stateRheinlandPfalzColor;
+}
+
+.state-SAARLAND {
+  background-color: $stateSaarlandColor;
+}
 
 .state-SAXONY {
   background-color: $stateSaxonyColor;
+}
+
+.state-SAXONY-ANHALT {
+  background-color: $stateSachsenAnhaltColor;
+}
+
+.state-SCHLESWIG-HOLSTEIN {
+  background-color: $stateSchleswigHolsteinColor;
 }
 
 .state-THURINGIA {
@@ -29,11 +100,11 @@ section.filters {
   .outer-container {
     @include outer-container;
 
-    a{
+    a {
       @extend .badge-tag;
       margin: 0.3em;
     }
-    .active{
+    .active {
       background-color: darken(white, 10%);
     }
   }
@@ -46,8 +117,10 @@ section.events {
   .outer-container {
     @include outer-container;
     .event {
-      @include span-columns(3);
-      @include omega(4n);
+      @include media($screen) {
+        @include span-columns(3);
+        @include omega(4n);
+      }
       @include media($tablet) {
         @include span-columns(4);
         @include omega(3n);

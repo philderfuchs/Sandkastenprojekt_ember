@@ -39,16 +39,22 @@ export default Ember.ArrayController.extend({
                 state: state,
                 city: city
             });
+
+            var tagSavePromises = [];
+
             this._newTags.forEach(function (tag) {
-                tag.save();
+                tagSavePromises.push(tag.save());
                 newEvent.get('tags').pushObject(tag);
             });
             // Clear the "New Todo" text field
             this.set('newTitle', '');
             this.set('_newTags', []);
 
-            // Save the new model
-            newEvent.save();
+            Ember.RSVP.all(tagSavePromises).then(function() {
+                console.log("ALL PROMISES RESOLVED");
+                // Save the new model
+                newEvent.save();
+            });
         },
         addTag() {
             var name = this.get('newTag');
