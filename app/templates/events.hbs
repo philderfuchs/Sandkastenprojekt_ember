@@ -1,3 +1,5 @@
+{{outlet}}
+
 <!--
 <section class="filters">
     <div class="outer-container">
@@ -17,126 +19,59 @@
     <div class="outer-container">
         <div class="map">
             <svg width="100%" height="100%"
-                     viewBox="50 30 400 450"
+                 viewBox="50 30 400 450"
                  preserveAspectRatio="xMinYMin meet">
-                {{#link-to 'events' 'SCHLESWIG-HOLSTEIN'}}
-                    <path class="state schleswig-holstein" shape-rendering="optimizeQuality"
-                          d="M 194,48 L 224,49 L 259,88 L 257,123 L 238,123 L 232,105 L 215,111 L 200,100 L 194,48  Z"/>
-                {{/link-to}}
-                {{#link-to 'events' 'MECKLENBURG-VORPOMMERN'}}
-                    <path class="state mecklenburg-vorpommern" shape-rendering="optimizeQuality"
-                          d="M 259,87 L 350,66 L 390,114 L 392,135 L 293,142 L 257,123 Z"/>
-                {{/link-to}}
-                {{#link-to 'events' 'BRANDENBURG'}}
-                    <path class="state brandenburg" shape-rendering="optimizeQuality"
-                          d="M 392,135 L 380,161 L 395,178 L 410,258 L 350,264 L 325,243 L 293,142 Z"/>
-                {{/link-to}}
-                {{#link-to 'events' 'SAXONY-ANHALT'}}
-                    <path class="state sachsen-anhalt" shape-rendering="optimizeQuality"
-                          d="M 293,142 L 325,243 L 300,245 L 300,270 L 250,240 L 258,160 Z"/>
-                {{/link-to}}
-                {{#link-to 'events' 'SAXONY'}}
-                    <path class="state sachsen" shape-rendering="optimizeQuality"
-                          d="M 410,258 L 350,264 L 325,243 L 300,245 L 300,270 L 295,310  L 415, 280 Z"/>
-                {{/link-to}}
-                {{#link-to 'events' 'THURINGIA'}}
-                    <path class="state thueringen" shape-rendering="optimizeQuality"
-                          d="M 250,240 L 300,270 L 295,310 L 250,315 L 225,300 L 230,250 Z"/>
-                {{/link-to}}
-                {{#link-to 'events' 'LOWERSAXONY'}}
-                    <path class="state niedersachsen" shape-rendering="optimizeQuality"
-                          d="M 200,100 L 215,111 L 232,105 L 238,123 L 257,123 L 293,142 L 258,160 L 250,240 L 230,250 L 200,180 L 120,180 L 125,117 Z"/>
-                {{/link-to}}
-                {{#link-to 'events' 'NORTHRHINE-WESTPHALIA'}}
-                    <path class="state nordrhein-westfalen" shape-rendering="optimizeQuality"
-                          d="M 120,180 L 200,180 L 224,235 L 165,290 L 90,310 L 85,210 Z"/>
-                {{/link-to}}
-                {{#link-to 'events' 'HESSE'}}
-                    <path class="state hessen" shape-rendering="optimizeQuality"
-                          d="M 224,235 L 230,250 L 225,300 L 200,345 L 170,345 L 165,290 Z"/>
-                {{/link-to}}
-                {{#link-to 'events' 'RHINELAND-PALATINATE'}}
-                    <path class="state rheinland-pfalz" shape-rendering="optimizeQuality"
-                          d="M 165,290 L 170,345 L 158,370 L 125,365 L 123,345 L 90,350 L 90,310 Z"/>
-                {{/link-to}}
-                {{#link-to 'events' 'SAARLAND'}}
-                    <path class="state saarland" shape-rendering="optimizeQuality"
-                          d="M 125,365 L 123,345 L 90,350  L 105,363 Z"/>
-                {{/link-to}}
-                {{#link-to 'events' 'BAVARIA'}}
-                    <path class="state bayern" shape-rendering="optimizeQuality"
-                          d="M 225,300 L 250,315 L 295,310 L 360,430 L320,465 L 235,475 L 230,380 L 200,345 Z"/>
-                {{/link-to}}
-                {{#link-to 'events' 'BADEN-WUERTTEMBERG'}}
-                    <path class="state baden-wuerttemberg" shape-rendering="optimizeQuality"
-                          d="M 170,345 L 200,345 L 230,380 L 235,475 L 133,463 L143,395 Z"/>
-                {{/link-to}}
+                <path class="state schleswig-holstein" shape-rendering="optimizeQuality"
+                      d="M 194,48 L 224,49 L 259,88 L 257,123 L 238,123 L 232,105 L 215,111 L 200,100 L 194,48  Z"/>
+                <path class="state mecklenburg-vorpommern" shape-rendering="optimizeQuality"
+                      d="M 259,87 L 350,66 L 390,114 L 392,135 L 293,142 L 257,123 Z"/>
+                <path class="state brandenburg" shape-rendering="optimizeQuality"
+                      d="M 392,135 L 380,161 L 395,178 L 410,258 L 350,264 L 325,243 L 293,142 Z"/>
+                <path class="state sachsen-anhalt" shape-rendering="optimizeQuality"
+                      d="M 293,142 L 325,243 L 300,245 L 300,270 L 250,240 L 258,160 Z"/>
+                <path class="state sachsen" shape-rendering="optimizeQuality"
+                      d="M 410,258 L 350,264 L 325,243 L 300,245 L 300,270 L 295,310  L 415, 280 Z"/>
+                <path class="state thueringen" shape-rendering="optimizeQuality"
+                      d="M 250,240 L 300,270 L 295,310 L 250,315 L 225,300 L 230,250 Z"/>
+                <path class="state niedersachsen" shape-rendering="optimizeQuality"
+                      d="M 200,100 L 215,111 L 232,105 L 238,123 L 257,123 L 293,142 L 258,160 L 250,240 L 230,250 L 200,180 L 120,180 L 125,117 Z"/>
+                <path class="state nordrhein-westfalen" shape-rendering="optimizeQuality"
+                      d="M 120,180 L 200,180 L 224,235 L 165,290 L 90,310 L 85,210 Z"/>
+                <path class="state hessen" shape-rendering="optimizeQuality"
+                      d="M 224,235 L 230,250 L 225,300 L 200,345 L 170,345 L 165,290 Z"/>
+                <path class="state rheinland-pfalz" shape-rendering="optimizeQuality"
+                      d="M 165,290 L 170,345 L 158,370 L 125,365 L 123,345 L 90,350 L 90,310 Z"/>
+                <path class="state saarland" shape-rendering="optimizeQuality"
+                      d="M 125,365 L 123,345 L 90,350  L 105,363 Z"/>
+
+                <path class="state bayern" shape-rendering="optimizeQuality"
+                      d="M 225,300 L 250,315 L 295,310 L 360,430 L320,465 L 235,475 L 230,380 L 200,345 Z"/>
+                <path class="state baden-wuerttemberg" shape-rendering="optimizeQuality"
+                      d="M 170,345 L 200,345 L 230,380 L 235,475 L 133,463 L143,395 Z"/>
             </svg>
         </div>
         <div class="events">
-            {{#each}}
-                <div class="event">
-                    <div class="hover-tile-outer">
-                        {{{get-state city state}}}
-                        <div class="hover-tile-container"
-                             style="background: url('danceoff.jpg'); background-position: top; background-size: cover">
-                            <div class="hover-tile hover-tile-visible">
-                                <span class="title">{{title}}</span><br><br>
-                                <span class="date">{{format-date date}}</span>
-                            </div>
-                            <div class="hover-tile hover-tile-hidden">
-                                <div>
-                                    {{#each tags}}<span class="badge-tag">{{name}}</span> {{/each}}
+            {{#each event in model}}
+                {{#if event.id}}
+                    <div class="event">
+                        <div class="hover-tile-outer">
+                            {{{get-state event.city event.state}}}
+                            <div class="hover-tile-container"
+                                 style="background: url('danceoff.jpg'); background-position: top; background-size: cover">
+                                <div class="hover-tile hover-tile-visible">
+                                    <span class="title">{{event.title}}</span><br><br>
+                                    <span class="date">{{format-date event.date}}</span>
+                                </div>
+                                <div class="hover-tile hover-tile-hidden">
+                                    <div>
+                                        {{#each tag in event.tags}}<span class="badge-tag">{{tag.name}}</span> {{/each}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                {{/if}}
             {{/each}}
         </div>
     </div>
 </section>
-
-
-<section class="create-event">
-    <div class="outer-container">
-        <fieldset>
-            <form {{action "createEvent" on="submit"}}>
-                <h1>Heard about an Event? Share it!</h1><br>
-
-                <div class="name-box">
-                    <span class="field-description">Name</span>
-                    {{input type="text" id="title" placeholder="Whats the name of the event?" value=newTitle}}
-                </div>
-                <div class="date-box">
-                    <span class="field-description">Date</span>
-                    {{input type="date" id="date" value=newDate}}
-                </div>
-                <div class="city-box">
-                    <span class="field-description">City</span>
-                    {{input type="text" id="city" value=newCity}}
-                </div>
-                <div class="state-box">
-                    <span class="field-description">State</span>
-                    {{view "select" content=controller.allStatesAsList optionValuePath="content.key" optionLabelPath="content.value" value=newState}}
-                </div>
-                <div class="tag-row">
-                    <div class="tag-field">
-                        <span class="field-description">Tags</span>
-                        {{input type="text" id="tag" value=newTag}}
-                    </div>
-                    <div class="tag-add">
-                        <button class="tag-add-button" {{action 'addTag'}}>+ add</button>
-                    </div>
-                    <div class="current-tags">
-                        {{#each tag in controller.currentTags}}<span class="badge-tag">{{tag}}</span> {{/each}}
-                    </div>
-                </div>
-                <div class="create-event">
-                    <button id="create-button" type="submit">Share!</button>
-                </div>
-            </form>
-        </fieldset>
-    </div>
-</section>
-

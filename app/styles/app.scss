@@ -196,26 +196,6 @@ section.view-events {
 
         margin-bottom: 2em;
 
-        .event-header {
-          line-height: 1.3em;
-          text-align: right;
-          color: white;
-          font-size: 1em;
-          padding: 0.3em 0.6em;
-        }
-
-        .title {
-          background: rgba(black, 0.7);
-          color: white;
-          font-size: 2em;
-          font-weight: bold;
-          line-height: initial;
-        }
-        .date {
-          background: rgba(black, 0.7);
-          color: white;
-          font-size: 1em;
-        }
       }
     }
   }
@@ -227,6 +207,14 @@ section.create-event {
 
   .outer-container {
     @include outer-container;
+
+    .event {
+      @include span-columns(4);
+      @include shift(4);
+      @include omega();
+      margin-bottom: 2em;
+
+    }
 
     fieldset {
       margin-top: 3em;
@@ -291,12 +279,13 @@ section.create-event {
 
       }
 
-      .create-event {
+      .share-event {
         @include fill-parent();
         @include row(table);
       }
 
     }
+
   }
 
   input {
@@ -327,4 +316,26 @@ section.create-event {
     color: gray;
   }
 
+}
+
+.event-header {
+  line-height: 1.3em;
+  text-align: right;
+  color: white;
+  font-size: 1em;
+  padding: 0.3em 0.6em;
+}
+
+.title {
+  background: rgba(black, 0.7);
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+  line-height: initial;
+}
+
+.date {
+  background: rgba(black, 0.7);
+  color: white;
+  font-size: 1em;
 }
