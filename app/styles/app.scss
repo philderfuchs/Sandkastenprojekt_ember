@@ -3,6 +3,7 @@
 @import "../../bower_components/neat/app/assets/stylesheets/neat";
 @import "refills";
 
+
 $screen: new-breakpoint(min-width 900px 12);
 $tablet: new-breakpoint(max-width 900px 12);
 $smartlet: new-breakpoint(max-width 650px 12);
@@ -92,7 +93,7 @@ $stateThueringenColor: #61AE5B;
 body {
   margin: 0;
   padding: 0;
-  background-color: $light-gray;
+  font-family: "open_sansregular";
 }
 
 section.filters {
@@ -124,10 +125,17 @@ section.view-events {
         @include span-columns(12);
       }
 
-      .state {
+      path {
+        transition: all 0.2s ease-out 0s;
+
         &:hover {
-          opacity: 0.3;
           cursor: pointer;
+          stroke: black;
+          stroke-width: 5;
+
+        }
+        &.inactive{
+          opacity: 0.3;
         }
       }
 
@@ -180,6 +188,7 @@ section.view-events {
       }
 
       .event {
+
         @include media($screen) {
           @include span-columns(4);
           @include omega(3n);
@@ -327,15 +336,17 @@ section.create-event {
 }
 
 .title {
+  font-family: "bebas_neuebook";
   background: rgba(black, 0.7);
   color: white;
-  font-size: 2em;
-  font-weight: bold;
+  font-size: 3em;
   line-height: initial;
 }
 
 .date {
+  font-family: "bebas_neuebook";
+
   background: rgba(black, 0.7);
   color: white;
-  font-size: 1em;
+  font-size: 2em;
 }

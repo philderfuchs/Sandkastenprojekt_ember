@@ -17,41 +17,9 @@
 
 <section class="view-events">
     <div class="outer-container">
-        <div class="map">
-            <svg width="100%" height="100%"
-                 viewBox="50 30 400 450"
-                 preserveAspectRatio="xMinYMin meet">
-                <path class="state schleswig-holstein" shape-rendering="optimizeQuality"
-                      d="M 194,48 L 224,49 L 259,88 L 257,123 L 238,123 L 232,105 L 215,111 L 200,100 L 194,48  Z"/>
-                <path class="state mecklenburg-vorpommern" shape-rendering="optimizeQuality"
-                      d="M 259,87 L 350,66 L 390,114 L 392,135 L 293,142 L 257,123 Z"/>
-                <path class="state brandenburg" shape-rendering="optimizeQuality"
-                      d="M 392,135 L 380,161 L 395,178 L 410,258 L 350,264 L 325,243 L 293,142 Z"/>
-                <path class="state sachsen-anhalt" shape-rendering="optimizeQuality"
-                      d="M 293,142 L 325,243 L 300,245 L 300,270 L 250,240 L 258,160 Z"/>
-                <path class="state sachsen" shape-rendering="optimizeQuality"
-                      d="M 410,258 L 350,264 L 325,243 L 300,245 L 300,270 L 295,310  L 415, 280 Z"/>
-                <path class="state thueringen" shape-rendering="optimizeQuality"
-                      d="M 250,240 L 300,270 L 295,310 L 250,315 L 225,300 L 230,250 Z"/>
-                <path class="state niedersachsen" shape-rendering="optimizeQuality"
-                      d="M 200,100 L 215,111 L 232,105 L 238,123 L 257,123 L 293,142 L 258,160 L 250,240 L 230,250 L 200,180 L 120,180 L 125,117 Z"/>
-                <path class="state nordrhein-westfalen" shape-rendering="optimizeQuality"
-                      d="M 120,180 L 200,180 L 224,235 L 165,290 L 90,310 L 85,210 Z"/>
-                <path class="state hessen" shape-rendering="optimizeQuality"
-                      d="M 224,235 L 230,250 L 225,300 L 200,345 L 170,345 L 165,290 Z"/>
-                <path class="state rheinland-pfalz" shape-rendering="optimizeQuality"
-                      d="M 165,290 L 170,345 L 158,370 L 125,365 L 123,345 L 90,350 L 90,310 Z"/>
-                <path class="state saarland" shape-rendering="optimizeQuality"
-                      d="M 125,365 L 123,345 L 90,350  L 105,363 Z"/>
-
-                <path class="state bayern" shape-rendering="optimizeQuality"
-                      d="M 225,300 L 250,315 L 295,310 L 360,430 L320,465 L 235,475 L 230,380 L 200,345 Z"/>
-                <path class="state baden-wuerttemberg" shape-rendering="optimizeQuality"
-                      d="M 170,345 L 200,345 L 230,380 L 235,475 L 133,463 L143,395 Z"/>
-            </svg>
-        </div>
+        {{partial 'map/map'}}
         <div class="events">
-            {{#each event in model}}
+            {{#each event in filteredEvents}}
                 {{#if event.id}}
                     <div class="event">
                         <div class="hover-tile-outer">
