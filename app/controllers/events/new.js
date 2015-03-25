@@ -2,6 +2,7 @@ import Ember from 'ember';
 import StateEnum from '../../models/stateEnum';
 
 export default Ember.ObjectController.extend({
+    _tags: [],
     allStatesAsList: (function () {
         var array = [];
         for (var key in StateEnum) {
@@ -15,19 +16,26 @@ export default Ember.ObjectController.extend({
     }.property('model.tags.@each'),
 
     actions: {
-        addTag() {
-            var name = this.get('newTag');
-            if (!name.trim()) {
-                return;
-            }
-            var newTag = this.store.createRecord('tag', {
-                name: name
-            });
-            //this.get('_tags').pushObject(newTag);
-            this.set('newTag', '');
+        //addTag() {
+        //    var name = this.get('newTag');
+        //    if (!name.trim()) {
+        //        return;
+        //    }
+        //    var newTag = this.store.createRecord('tag', {
+        //        name: name
+        //    });
+        //    //this.get('_tags').pushObject(newTag);
+        //    this.set('newTag', '');
+//
+        //    this.get('model').get('tags').pushObject(newTag);
+//
+        //},
 
-            this.get('model').get('tags').pushObject(newTag);
-
+        addTag(name) {
+            this.get('_tags').pushObject(name);
+        },
+        removeTag(name) {
+            this.get('_tags').removeObject(name);
         },
         createEvent() {
             var _this = this;
@@ -42,16 +50,20 @@ export default Ember.ObjectController.extend({
             this.get('model').set('date', date);
 
 
-            var tagSavePromises = [];
+            this.get('_tags').forEach(function (name) {
+                _this.get('model').get('tags').createRecord({name: name})
+            });
+            this.set('_tags', []);
 
+            var tagSavePromises = [];
             _this.get('model').get('tags').forEach(function (tag) {
                 tagSavePromises.push(tag.save());
             });
 
-            Ember.RSVP.all(tagSavePromises).then(function() {
+            Ember.RSVP.all(tagSavePromises).then(function () {
                 console.log("ALL TAG PROMISES RESOLVED");
                 // Save the new model
-                _this.get('model').save().then(function(){
+                _this.get('model').save().then(function () {
                     _this.transitionToRoute('events');
                 });
 
