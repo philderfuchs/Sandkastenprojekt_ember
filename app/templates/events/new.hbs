@@ -24,6 +24,7 @@
                     <div class="tag-field">
                         <span class="field-description">Tags</span>
                         {{input type="text" value=newTag}}
+                        {{events/tag-input placeholder="put your tags here..." addTag="addTag" removeTag="removeTag"}}
                     </div>
                     <div class="tag-add">
                         <button class="tag-add-button" {{action 'addTag'}}>+ add</button>

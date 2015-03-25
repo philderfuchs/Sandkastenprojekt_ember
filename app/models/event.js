@@ -5,7 +5,7 @@ var Event = DS.Model.extend({
     date: DS.attr('string'),
     state: DS.attr('string'),
     city: DS.attr('string'),
-    tags: DS.hasMany('tag', {async: true})
+    tags: DS.hasMany('tag')
 });
 
 //Event.reopenClass({
