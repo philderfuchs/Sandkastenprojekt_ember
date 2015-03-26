@@ -1,45 +1,27 @@
 {{outlet}}
 
-<!--
-<section class="filters">
-    <div class="outer-container">
-        {{#link-to 'events' ''}}
-            All
-        {{/link-to}}
-    {{#each state in controller.allStatesAsList}}
-        {{#link-to 'events' state.key}}
-            {{state.value}}
-        {{/link-to}}
-    {{/each}}
-    </div>
-</section>
--->
-
 <section class="view-events">
-    <div class="outer-container">
-        {{partial 'map/map'}}
-        <div class="events">
-            {{#each event in filteredEvents}}
-                {{#if event.id}}
-                    <div class="event">
-                        <div class="hover-tile-outer">
-                            {{{get-state event.city event.state}}}
-                            <div class="hover-tile-container"
-                                 style="background: url('danceoff.jpg'); background-position: top; background-size: cover">
-                                <div class="hover-tile hover-tile-visible">
-                                    <span class="title">{{event.title}}</span><br><br>
-                                    <span class="date">{{format-date event.date}}</span>
-                                </div>
-                                <div class="hover-tile hover-tile-hidden">
-                                    <div>
-                                        {{#each tag in event.tags}}<span class="badge-tag">{{tag.name}}</span> {{/each}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {{/if}}
+  {{partial 'map/map'}}
+  <div class="events">
+    {{#each event in filteredEvents}}
+    {{#if event.id}}
+    <div class="event">
+      {{{get-state event.city event.state}}}
+        <div class="event-content">
+          <div class=title-container>
+            <span class="title">{{event.title}}</span>
+          </div>
+          <div class=date-container>
+            <span class="date">{{format-date event.date}}</span>
+          </div>
+          <div class="tag-container">
+            {{#each tag in event.tags}}
+            <span class="badge-tag">{{tag.name}}</span>
             {{/each}}
+          </div>
         </div>
     </div>
+    {{/if}}
+    {{/each}}
+  </div>
 </section>

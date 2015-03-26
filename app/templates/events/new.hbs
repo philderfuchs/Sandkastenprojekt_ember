@@ -22,15 +22,8 @@
                 </div>
                 <div class="tag-row">
                     <div class="tag-field">
-                        <span class="field-description">Tags</span>
-                        {{input type="text" value=newTag}}
-                        {{events/tag-input placeholder="put your tags here..." addTag="addTag" removeTag="removeTag"}}
-                    </div>
-                    <div class="tag-add">
-                        <button class="tag-add-button" {{action 'addTag'}}>+ add</button>
-                    </div>
-                    <div class="current-tags">
-                        {{#each tag in controller.tagsByNames}}<span class="badge-tag">{{tag}}</span> {{/each}}
+                        <span class="field-description">Tags</span><br>
+                        {{events/tag-input placeholder="put your tags here..." tags=allTagsByNames addTag="addTag" removeTag="removeTag"}}
                     </div>
                 </div>
                 <div class="share-event">

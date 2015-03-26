@@ -3,15 +3,15 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     tagName: 'input',
 
-    placeholder: null,
+    placeholder: null, // passed in
+    tags: null, //
 
     didInsertElement: function () {
         var _this = this;
         var options = {};
 
-
         options.placeholder = this.get('placeholder');
-        options.tags = ["one", "two"];
+        options.tags = this.get('tags');
 
         this._select = this.$().select2(options);
 

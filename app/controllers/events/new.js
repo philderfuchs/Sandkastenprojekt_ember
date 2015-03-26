@@ -11,26 +11,11 @@ export default Ember.ObjectController.extend({
         return array;
     }).property(),
 
-    tagsByNames: function () {
-        return this.get('model').get('tags').mapBy('name');
-    }.property('model.tags.@each'),
+    allTagsByNames: function () {
+        return this.store.all('tag').mapBy('name');
+    }.property(),
 
     actions: {
-        //addTag() {
-        //    var name = this.get('newTag');
-        //    if (!name.trim()) {
-        //        return;
-        //    }
-        //    var newTag = this.store.createRecord('tag', {
-        //        name: name
-        //    });
-        //    //this.get('_tags').pushObject(newTag);
-        //    this.set('newTag', '');
-//
-        //    this.get('model').get('tags').pushObject(newTag);
-//
-        //},
-
         addTag(name) {
             this.get('_tags').pushObject(name);
         },
@@ -51,7 +36,7 @@ export default Ember.ObjectController.extend({
 
 
             this.get('_tags').forEach(function (name) {
-                _this.get('model').get('tags').createRecord({name: name})
+                _this.get('model').get('tags').createRecord({name: name});
             });
             this.set('_tags', []);
 

@@ -96,27 +96,118 @@ body {
   font-family: "open_sansregular";
 }
 
-section.filters {
-  margin-top: 3em;
-  .outer-container {
+header {
+    width:100%;
+    position:fixed;
+    top:0px;
+
+    z-index: 100;
+
+  .navigation{
     @include outer-container;
 
-    a {
-      @extend .badge-tag;
-      margin: 0.3em;
+    @include media($mobile) {
+      height: 8vh;
     }
-    .active {
-      background-color: darken(white, 10%);
-    }
+    background-color: #333;
+    color: transparentize(white, 0.2);
+    padding: 8px;
+    text-align: right;
+    margin:0px auto;
+
+
   }
+
+
 }
 
+
 section.view-events {
+  @include outer-container;
+
   background-color: white;
   padding: 3em 0;
 
-  .outer-container {
-    @include outer-container;
+  .event{
+
+    height: 20em;
+    position: relative;
+
+    background: url('../danceoff.jpg');
+    background-position: top;
+    background-size: cover;
+
+    .event-content{
+      padding: 15px;
+      height: 100%;
+
+    }
+
+    .event-header {
+      line-height: 1.3em;
+      text-align: right;
+      color: white;
+      font-size: 1em;
+      padding: 0.3em 0.6em;
+    }
+
+    .title {
+      font-family: "bebas_neuebook";
+      background: rgba(black, 0.7);
+      color: white;
+      font-size: 3em;
+      line-height: initial;
+    }
+
+    .date {
+      font-family: "bebas_neuebook";
+      background: rgba(black, 0.7);
+      color: white;
+      font-size: 2em;
+    }
+
+    .tag-container{
+      position: absolute;
+      bottom: 15px;
+
+      .badge-tag{
+        border: 1px solid #777;
+      }
+
+    }
+  }
+
+  .events {
+    @include span-columns(8);
+
+    @include media($smartlet) {
+      @include span-columns(12);
+    }
+
+    .event {
+
+      margin-bottom: 2em;
+
+      @include media($screen) {
+        @include span-columns(4);
+        @include omega(3n);
+      }
+      @include media($tablet) {
+        @include span-columns(6);
+        @include omega(2n);
+      }
+
+      @include media($mobile) {
+        @include span-columns(12);
+        @include omega();
+
+        height: 92vh;
+        margin-bottom: 0 !important;
+
+      }
+
+    }
+  }
 
     .map {
       @include span-columns(4);
@@ -180,34 +271,6 @@ section.view-events {
       }
     }
 
-    .events {
-      @include span-columns(8);
-
-      @include media($smartlet) {
-        @include span-columns(12);
-      }
-
-      .event {
-
-        @include media($screen) {
-          @include span-columns(4);
-          @include omega(3n);
-        }
-        @include media($tablet) {
-          @include span-columns(6);
-          @include omega(2n);
-        }
-
-        @include media($mobile) {
-          @include span-columns(12);
-          @include omega();
-        }
-
-        margin-bottom: 2em;
-
-      }
-    }
-  }
 }
 
 section.create-event {
@@ -226,7 +289,6 @@ section.create-event {
     }
 
     fieldset {
-      margin-top: 3em;
 
       .name-box {
         @include span-columns(6);
@@ -274,16 +336,22 @@ section.create-event {
       .tag-row {
 
         .tag-field {
-          @include span-columns(5);
-        }
-        .tag-add {
-          @include span-columns(1);
-          vertical-align: bottom;
-        }
-        .current-tags {
-          @include span-columns(6);
-          @include omega();
-          vertical-align: bottom;
+          @include span-columns(12);
+          @include omega;
+
+          .select2-container {
+            @extend input;
+
+            .select2-search-choice{
+              margin: 1px;
+              background-color: white;
+              line-height: inherit;
+              background-image: none
+            }
+            .select2-search-choice-close{
+              top: 8px;
+            }
+          }
         }
 
       }
@@ -313,11 +381,6 @@ section.create-event {
     color: grey;
   }
 
-  .badge-tag {
-    border: 1px solid;
-    line-height: $field-height;
-  }
-
   .tag-add-button {
     line-height: 6px;
     background-color: white;
@@ -325,28 +388,4 @@ section.create-event {
     color: gray;
   }
 
-}
-
-.event-header {
-  line-height: 1.3em;
-  text-align: right;
-  color: white;
-  font-size: 1em;
-  padding: 0.3em 0.6em;
-}
-
-.title {
-  font-family: "bebas_neuebook";
-  background: rgba(black, 0.7);
-  color: white;
-  font-size: 3em;
-  line-height: initial;
-}
-
-.date {
-  font-family: "bebas_neuebook";
-
-  background: rgba(black, 0.7);
-  color: white;
-  font-size: 2em;
 }
