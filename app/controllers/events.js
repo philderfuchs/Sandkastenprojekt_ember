@@ -3,6 +3,16 @@ import StateEnum from '../models/stateEnum';
 
 
 export default Ember.ArrayController.extend({
+    init: function () {
+        this._super.apply(this, arguments);
+        console.log('init function');
+        $('.events').panelSnap({
+            $menu: $('header .navigation'),
+            onActivate: function () {
+                console.log('SNAP');
+            }
+        });
+    },
     queryParams: ['state'],
     state: [],
     filteredEvents: Ember.computed(
@@ -25,9 +35,9 @@ export default Ember.ArrayController.extend({
                 return this.get('model');
             }
         }),
-    manageStateClasses : function(state){
+    manageStateClasses: function (state) {
 
-        if(this.get('state').length == 0){
+        if (this.get('state').length == 0) {
             // no query parameters, remove all incactive
             for (var key in StateEnum) {
                 this.set(key, true);
@@ -35,7 +45,7 @@ export default Ember.ArrayController.extend({
         } else {
             // query parameters, make everything inactive
             for (var key in StateEnum) {
-                if(this.get('state').contains(key)){
+                if (this.get('state').contains(key)) {
                     this.set(key, true);
                 } else {
                     this.set(key, false);
@@ -43,6 +53,7 @@ export default Ember.ArrayController.extend({
             }
         }
     }.on('init').observes('state.[]'),
+
     actions: {
         setState: function (state) {
             if (this.get('state').contains(state)) {
