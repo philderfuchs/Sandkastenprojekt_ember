@@ -53,6 +53,9 @@ export default Ember.ObjectController.extend({
                 });
 
             });
+        },
+        cancel(){
+            this.transitionToRoute('events');
         }
     }
 

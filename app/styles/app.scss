@@ -25,8 +25,10 @@ $stateSaxonyColor: #08CB74;
 $stateSchleswigHolsteinColor: #54BFC3;
 $stateThueringenColor: #61AE5B;
 
+$navigationColor: #222;
+
 @mixin setStateBackground($color) {
-  background-color: transparentize($color, 0.5);
+  background-color: transparentize($color, 0.2);
 }
 
 @mixin vertical-align {
@@ -120,7 +122,7 @@ header {
     @include media($mobile) {
       height: 9vh;
     }
-    background-color: #222;
+    background-color: $navigationColor;
     color: transparentize(white, 0.2);
     padding: 3px;
     text-align: right;
@@ -129,7 +131,7 @@ header {
     button {
       height: 100%;
       background-color: #555;
-      &:hover{
+      &:hover {
         background-color: darken(#666, 15%);;
       }
     }
@@ -142,7 +144,14 @@ header {
   @include outer-container;
 
   background-color: white;
-  padding: 3em 0;
+
+  &.blurred {
+    filter: blur(10px); /* Someday, sigh ... */
+    -webkit-filter: blur(10px); /* Prefixed CSS3 blur filters */
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+  }
 
   .event {
 
@@ -175,9 +184,11 @@ header {
         right: 0px;
         bottom: 0px;
         left: 0px;
-        filter: blur(4px);
-        -webkit-filter: blur(4px);
-        -moz-filter: blur(4px);
+        filter: blur(5px); /* Someday, sigh ... */
+        -webkit-filter: blur(5px); /* Prefixed CSS3 blur filters */
+        -moz-filter: blur(5px);
+        -o-filter: blur(5px);
+        -ms-filter: blur(5px);
         z-index: 1;
       }
 
@@ -247,6 +258,8 @@ header {
   .events {
     @include span-columns(8);
 
+    z-index: -1;
+
     @include media($smartlet) {
       @include span-columns(12);
     }
@@ -288,69 +301,86 @@ header {
 
     }
   }
+}
 
-  .map {
-    @include span-columns(4);
+.map {
 
-    @include media($smartlet) {
-      @include span-columns(12);
-    }
+  z-index: 3;
+  display: none;
 
-    path {
-      transition: all 0.2s ease-out 0s;
+  @include media($mobile) {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+  }
 
-      &:hover {
-        cursor: pointer;
-        stroke: black;
-        stroke-width: 5;
+  .close {
+    cursor: pointer;
+    font-size: 40px;
+    color: transparentize(white, 0.2);
+    position: absolute;
+    right: 30px;
+    &:hover{
+      color: transparentize(white, 0.5);
+    }
+  }
+  .valign {
+    @include vertical-align;
+  }
 
-      }
-      &.inactive {
-        opacity: 0.3;
-      }
-    }
+  path {
+    transition: all 0.2s ease-out 0s;
 
-    .sachsen {
-      fill: $stateSaxonyColor;
+    &:hover {
+      cursor: pointer;
+      stroke: black;
+      stroke-width: 5;
+
     }
-    .schleswig-holstein {
-      fill: $stateSchleswigHolsteinColor;
-    }
-    .brandenburg {
-      fill: $stateBrandenburgColor;
-    }
-    .sachsen-anhalt {
-      fill: $stateSachsenAnhaltColor;
-    }
-    .mecklenburg-vorpommern {
-      fill: $stateMecklenburgVorpommernColor;
-    }
-    .thueringen {
-      fill: $stateThueringenColor;
-    }
-    .niedersachsen {
-      fill: $stateNiedersachsenColor;
-    }
-    .nordrhein-westfalen {
-      fill: $stateNordrheinWestfalenColor;
-    }
-    .hessen {
-      fill: $stateHessenColor;
-    }
-    .rheinland-pfalz {
-      fill: $stateRheinlandPfalzColor;
-    }
-    .saarland {
-      fill: $stateSaarlandColor;
-    }
-    .bayern {
-      fill: $stateBavariaColor;
-    }
-    .baden-wuerttemberg {
-      fill: $stateBadenWuerttembergColor;
+    &.inactive {
+      opacity: 0.5;
     }
   }
 
+  .sachsen {
+    fill: $stateSaxonyColor;
+  }
+  .schleswig-holstein {
+    fill: $stateSchleswigHolsteinColor;
+  }
+  .brandenburg {
+    fill: $stateBrandenburgColor;
+  }
+  .sachsen-anhalt {
+    fill: $stateSachsenAnhaltColor;
+  }
+  .mecklenburg-vorpommern {
+    fill: $stateMecklenburgVorpommernColor;
+  }
+  .thueringen {
+    fill: $stateThueringenColor;
+  }
+  .niedersachsen {
+    fill: $stateNiedersachsenColor;
+  }
+  .nordrhein-westfalen {
+    fill: $stateNordrheinWestfalenColor;
+  }
+  .hessen {
+    fill: $stateHessenColor;
+  }
+  .rheinland-pfalz {
+    fill: $stateRheinlandPfalzColor;
+  }
+  .saarland {
+    fill: $stateSaarlandColor;
+  }
+  .bayern {
+    fill: $stateBavariaColor;
+  }
+  .baden-wuerttemberg {
+    fill: $stateBadenWuerttembergColor;
+  }
 }
 
 section.create-event {

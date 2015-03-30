@@ -46,12 +46,15 @@ export default Ember.ArrayController.extend({
 
     actions: {
         setState: function (state) {
+
             if (this.get('state').contains(state)) {
                 this.get('state').removeObject(state);
             } else {
                 this.get('state').pushObject(state);
             }
+        },
+        toggleMap: function () {
+            $('.map').toggle();
         }
     }
-
 });
