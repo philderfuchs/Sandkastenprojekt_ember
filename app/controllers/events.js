@@ -3,16 +3,6 @@ import StateEnum from '../models/stateEnum';
 
 
 export default Ember.ArrayController.extend({
-    init: function () {
-        this._super.apply(this, arguments);
-        console.log('init function');
-        $('.events').panelSnap({
-            $menu: $('header .navigation'),
-            onActivate: function () {
-                console.log('SNAP');
-            }
-        });
-    },
     queryParams: ['state'],
     state: [],
     filteredEvents: Ember.computed(

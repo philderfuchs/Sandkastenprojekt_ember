@@ -1,0 +1,23 @@
+<div class="events">
+    {{#each event in filteredEvents}}
+
+        {{#if event.id}}
+            <section class="event">
+                {{{get-state event.city event.state}}}
+                <div class="event-content">
+                    <div class=title-container>
+                        <span class="title">{{event.title}}</span>
+                    </div>
+                    <div class=date-container>
+                        <span class="date">{{format-date event.date}}</span>
+                    </div>
+                    <div class="tag-container">
+                        {{#each tag in event.tags}}
+                            <span class="badge-tag">{{tag.name}}</span>
+                        {{/each}}
+                    </div>
+                </div>
+            </section>
+        {{/if}}
+    {{/each}}
+</div>
