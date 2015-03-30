@@ -20,5 +20,6 @@ var app = new EmberApp();
 app.import('bower_components/moment/moment.js');
 app.import('bower_components/select2/select2.js');
 app.import('bower_components/select2/select2.css');
+app.import('bower_components/panelsnap/jquery.panelSnap.js');
 
 module.exports = app.toTree();

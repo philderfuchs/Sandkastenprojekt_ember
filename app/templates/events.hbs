@@ -1,11 +1,11 @@
 {{outlet}}
 
-<section class="view-events">
+<div class="view-events">
   {{partial 'map/map'}}
   <div class="events">
     {{#each event in filteredEvents}}
     {{#if event.id}}
-    <div class="event">
+    <section class="event">
       {{{get-state event.city event.state}}}
         <div class="event-content">
           <div class=title-container>
@@ -20,8 +20,8 @@
             {{/each}}
           </div>
         </div>
-    </div>
+    </section>
     {{/if}}
     {{/each}}
   </div>
-</section>
+</div>
