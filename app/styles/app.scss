@@ -1,12 +1,13 @@
 @import "../../bower_components/bourbon/app/assets/stylesheets/bourbon";
 @import "../../bower_components/bitters/app/assets/stylesheets/base";
 @import "../../bower_components/neat/app/assets/stylesheets/neat";
+@import "../../bower_components/components-font-awesome/css/font-awesome.css";
 @import "refills";
 
-$screen: new-breakpoint(min-width 900px 12);
-$tablet: new-breakpoint(max-width 900px 12);
-$smartlet: new-breakpoint(max-width 650px 12);
-$mobile: new-breakpoint(max-width 400px 12);
+$screen: new-breakpoint(min-width 1000px 12);
+$tablet: new-breakpoint(max-width 1000px 12);
+$smartlet: new-breakpoint(max-width 750px 12);
+$mobile: new-breakpoint(max-width 500px 12);
 
 $stateBadenWuerttembergColor: #87288F;
 $stateBavariaColor: #D31E6B;
@@ -25,10 +26,10 @@ $stateSaxonyColor: #08CB74;
 $stateSchleswigHolsteinColor: #54BFC3;
 $stateThueringenColor: #61AE5B;
 
-$navigationColor: #222;
+$navigationColor: #333;
 
 @mixin setStateBackground($color) {
-  background-color: transparentize($color, 0.2);
+  background-color: transparentize($color, 0.3);
 }
 
 @mixin vertical-align {
@@ -37,6 +38,10 @@ $navigationColor: #222;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+.valigned {
+  @include vertical-align;
 }
 
 .state-BADEN-WUERTTEMBERG {
@@ -120,20 +125,42 @@ header {
     @include outer-container;
 
     @include media($mobile) {
+
       height: 9vh;
+
+      background-color: $navigationColor;
+
     }
-    background-color: $navigationColor;
-    color: transparentize(white, 0.2);
     padding: 3px;
-    text-align: right;
     margin: 0px auto;
 
     button {
-      height: 100%;
-      background-color: #555;
-      &:hover {
-        background-color: darken(#666, 15%);;
+      @include media($mobile) {
+        font-size: 3vh;
       }
+
+
+      height: 100%;
+      background-color: #404040;
+      border: 1px black solid;
+      color: transparentize(white, 0.3);
+      font-family: open_sanslight;
+      font-size: 18px;
+      &:hover {
+        background-color: lighten(#404040, 10%);
+      }
+
+      &.showMap{
+        @include media($mobile) {
+          display: block;
+        }
+        display:none;
+        float:left;
+      }
+      &.addEvent{
+        float:right;
+      }
+
     }
 
   }
@@ -159,7 +186,7 @@ header {
     position: relative;
 
     &, .blurred-background {
-      background: url('../improve.jpg');
+      background: url('../meagaint.jpg');
       background-position: top;
       background-size: cover;
     }
@@ -175,6 +202,7 @@ header {
         height: 9vh;
       }
 
+      height: 45px;
       overflow: hidden;
       position: relative;
 
@@ -195,23 +223,24 @@ header {
       .event-header {
 
         @include media($mobile) {
-          font-size: 1.5em;
+          font-size: 4vh;
           padding: 0.6em 0.6em;
           line-height: 3.5vh;
 
-          .valigned {
-            @include vertical-align;
-          }
         }
 
         height: 100%;
         position: relative;
-        line-height: 1.3em;
+        line-height: 1.1em;
         text-align: right;
         color: white;
         font-size: 1em;
         padding: 0.3em 0.6em;
         z-index: 2;
+
+        .city{
+          font-family: open_sanslight;
+        }
 
       }
     }
@@ -219,7 +248,7 @@ header {
     .title {
 
       @include media($mobile) {
-        font-size: 5em;
+        font-size: 13.5vh;
       }
 
       font-family: "bebas_neuebook";
@@ -231,7 +260,7 @@ header {
 
     .date {
       @include media($mobile) {
-        font-size: 3em;
+        font-size: 8vh;
       }
 
       font-family: "bebas_neuebook";
@@ -246,7 +275,7 @@ header {
 
       .badge-tag {
         @include media($mobile) {
-          font-size: 1.2em;
+          font-size: 2.5vh;
           border-radius: 5px;
         }
         border: 1px solid #777;
@@ -256,9 +285,9 @@ header {
   }
 
   .events {
-    @include span-columns(8);
+    //@include span-columns(8);
 
-    z-index: -1;
+    //z-index: -1;
 
     @include media($smartlet) {
       @include span-columns(12);
@@ -268,7 +297,7 @@ header {
       height: 91.1vh;
       width: 100%;
       position: absolute;
-      overflow: scroll;
+      overflow: auto;
       bottom: 0;
     }
 
@@ -277,10 +306,15 @@ header {
       margin-bottom: 2em;
 
       @include media($screen) {
+        @include span-columns(3);
+        @include omega(4n);
+      }
+      @include media($tablet) {
         @include span-columns(4);
         @include omega(3n);
       }
-      @include media($tablet) {
+
+      @include media($smartlet) {
         @include span-columns(6);
         @include omega(2n);
       }
@@ -303,29 +337,84 @@ header {
   }
 }
 
-.map {
-
-  z-index: 3;
-  display: none;
+.map-wrapper{
+  @include outer-container();
 
   @include media($mobile) {
+    border: none;
+    padding: 0;
+
+  }
+    margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 10px;
+
+  border: 1px #CCC solid;
+
+  .explanation-wrapper{
+    @include span-columns(4);
+    @include omega();
+
+    @include media($smartlet) {
+      font-size: 25px;
+    }
+
+    @include media($mobile) {
+      display:none;
+    }
+
+    text-align: center;
+    display: inline-flex;
+    height: 350px;
+    font-size: 32px;
+    font-family: open_sanslight;
+    color: #888;
+
+    .explanation-inner{
+      margin: auto 5px;
+    }
+
+  }
+}
+.map {
+  @include span-columns(6);
+
+  z-index: 3;
+
+  display: block;
+
+  height: 350px;
+
+  @include media($mobile) {
+    @include span-columns(12);
+    @include shift(0);
+
+    height: auto;
+    display: none;
     position: absolute;
     width: 100%;
-    height: 100vh;
+    top: 9vh;
+    padding-bottom: 20px;
+    background-color: $navigationColor;
+
   }
 
   .close {
     cursor: pointer;
-    font-size: 40px;
     color: transparentize(white, 0.2);
     position: absolute;
     right: 30px;
+    top: 5px;
     &:hover{
       color: transparentize(white, 0.5);
     }
   }
-  .valign {
-    @include vertical-align;
+
+  .svg-wrapper{
+    float: right;
+    @include media($mobile) {
+      float: none;
+    }
   }
 
   path {

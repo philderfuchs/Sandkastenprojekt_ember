@@ -17,6 +17,7 @@
     "neat": "~1.7.2",
     "bitters": "~1.0.0",
     "select2": "~3.5.2",
-    "panelsnap": "~0.14.0"
+    "panelsnap": "~0.14.0",
+    "components-font-awesome": "~4.3.0"
   }
 }

@@ -21,5 +21,7 @@ app.import('bower_components/moment/moment.js');
 app.import('bower_components/select2/select2.js');
 app.import('bower_components/select2/select2.css');
 app.import('bower_components/panelsnap/jquery.panelSnap.js');
+app.import('bower_components/components-font-awesome/css/font-awesome.css');
+
 
 module.exports = app.toTree();

@@ -5,5 +5,5 @@ export default Ember.Handlebars.makeBoundHelper(function(city, state) {
   if(!city){
     city = "";
   }
-  return "<div class='event-header-wrapper'><div class='blurred-background'></div> <div class='event-header state-" + state + "'><div class='valigned'>" + city + "<br><b>" + StateEnum[state] + "</b></div></div></div>";
+  return "<div class='event-header-wrapper'><div class='blurred-background'></div> <div class='event-header state-" + state + "'><div class='valigned'><span class='city'>" + city + "</span><br>" + StateEnum[state].toUpperCase() + "</b></div></div>";
 });
