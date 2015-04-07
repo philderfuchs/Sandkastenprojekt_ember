@@ -22,6 +22,10 @@ app.import('bower_components/select2/select2.js');
 app.import('bower_components/select2/select2.css');
 app.import('bower_components/panelsnap/jquery.panelSnap.js');
 app.import('bower_components/components-font-awesome/css/font-awesome.css');
+app.import('vendor/cloudinary_js-master/jquery.ui.widget.js');
+app.import('vendor/cloudinary_js-master/jquery.iframe-transport.js');
+app.import('vendor/cloudinary_js-master/jquery.fileupload.js');
+app.import('vendor/cloudinary_js-master/jquery.cloudinary.js');
 
 
 module.exports = app.toTree();

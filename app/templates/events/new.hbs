@@ -26,6 +26,9 @@
                         {{events/tag-input placeholder="put your tags here..." tags=allTagsByNames addTag="addTag" removeTag="removeTag"}}
                     </div>
                 </div>
+                <div>
+                    {{events/image-uploader}}
+                </div>
                 <div class="share-event">
                     <button id="create-button" type="submit">Share!</button>
                     <button {{action "cancel"}}>Cancel</button>
