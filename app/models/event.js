@@ -1,11 +1,12 @@
 import DS from 'ember-data';
 
 var Event = DS.Model.extend({
-    title: DS.attr('string'),
-    date: DS.attr('string'),
-    state: DS.attr('string'),
-    city: DS.attr('string'),
-    tags: DS.hasMany('tag')
+  title: DS.attr('string'),
+  date: DS.attr('string'),
+  state: DS.attr('string'),
+  city: DS.attr('string'),
+  imageURL: DS.attr('string'),
+  tags: DS.hasMany('tag')
 });
 
 //Event.reopenClass({

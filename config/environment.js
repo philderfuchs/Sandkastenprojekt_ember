@@ -7,7 +7,9 @@ module.exports = function(environment) {
     baseURL: '/',
     locationType: 'auto',
     contentSecurityPolicy: {
-      'connect-src': "'self' http://localhost:5050/"
+      'connect-src': "'self' http://localhost:5050/ https://api.cloudinary.com/",
+      'img-src': "'self' http://res.cloudinary.com",
+      'style-src': "'self' 'unsafe-inline'"
     },
     EmberENV: {
       FEATURES: {
@@ -28,6 +30,8 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.CLOUDINARY_NAME = 'dy055wvbg';
+    ENV.CLOUDINARY_UPLOAD_PRESET = 'zkhpdcdw';
   }
 
   if (environment === 'test') {
@@ -43,7 +47,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+     ENV.CLOUDINARY_NAME = 'dy055wvbg';
+     ENV.CLOUDINARY_UPLOAD_PRESET = 'zkhpdcdw';
   }
 
   return ENV;

@@ -1,39 +1,40 @@
 <section class="create-event">
-    <div class="outer-container">
-        <fieldset>
-            <form {{action "createEvent" on="submit"}}>
-                <h1>Heard about an Event? Share it!</h1><br>
+	<div class="outer-container">
+		<fieldset>
+			<form {{action "createEvent" on="submit"}}>
+				<h1>Heard about an Event? Share it!</h1><br>
 
-                <div class="name-box">
-                    <span class="field-description">Name</span>
-                    {{input type="text" placeholder="Whats the name of the event?" value=model.title}}
-                </div>
-                <div class="date-box">
-                    <span class="field-description">Date</span>
-                    {{input type="date" value=newDate}}
-                </div>
-                <div class="city-box">
-                    <span class="field-description">City</span>
-                    {{input type="text" value=model.city}}
-                </div>
-                <div class="state-box">
-                    <span class="field-description">State</span>
-                    {{view "select" content=controller.allStatesAsList optionValuePath="content.key" optionLabelPath="content.value" value=model.state}}
-                </div>
-                <div class="tag-row">
-                    <div class="tag-field">
-                        <span class="field-description">Tags</span><br>
-                        {{events/tag-input placeholder="put your tags here..." tags=allTagsByNames addTag="addTag" removeTag="removeTag"}}
-                    </div>
-                </div>
-                <div>
-                    {{events/image-uploader}}
-                </div>
-                <div class="share-event">
-                    <button id="create-button" type="submit">Share!</button>
-                    <button {{action "cancel"}}>Cancel</button>
-                </div>
-            </form>
-        </fieldset>
-    </div>
+				<div class="name-box">
+					<span class="field-description">Name</span>
+                  {{input type="text" placeholder="Whats the name of the event?" value=model.title}}
+				</div>
+				<div class="date-box">
+					<span class="field-description">Date</span>
+                  {{input type="date" value=newDate}}
+				</div>
+				<div class="city-box">
+					<span class="field-description">City</span>
+                  {{input type="text" value=model.city}}
+				</div>
+				<div class="state-box">
+					<span class="field-description">State</span>
+                  {{view "select" content=controller.allStatesAsList optionValuePath="content.key" optionLabelPath="content.value" value=model.state}}
+				</div>
+				<div class="tag-row">
+					<div class="tag-field">
+						<span class="field-description">Tags</span><br>
+                      {{events/tag-input placeholder="put your tags here..." tags=allTagsByNames addTag="addTag" removeTag="removeTag"}}
+					</div>
+				</div>
+				<div>
+          {{view 'cloudinary'}}
+          {{cloudinary-thumbnail model.imageURL}}
+        </div>
+				<div class="share-event">
+					<button id="create-button" type="submit">Share!</button>
+					<button {{action "cancel"}}>Cancel</button>
+				</div>
+			</form>
+		</fieldset>
+	</div>
 </section>

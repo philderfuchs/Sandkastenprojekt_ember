@@ -17,15 +17,24 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
+//moment
 app.import('bower_components/moment/moment.js');
+
+//select2
 app.import('bower_components/select2/select2.js');
 app.import('bower_components/select2/select2.css');
+
+//panelsnap
 app.import('bower_components/panelsnap/jquery.panelSnap.js');
+
+// font-awesome
 app.import('bower_components/components-font-awesome/css/font-awesome.css');
-app.import('vendor/cloudinary_js-master/jquery.ui.widget.js');
-app.import('vendor/cloudinary_js-master/jquery.iframe-transport.js');
-app.import('vendor/cloudinary_js-master/jquery.fileupload.js');
-app.import('vendor/cloudinary_js-master/jquery.cloudinary.js');
+
+//cloudinary
+app.import('vendor/cloudinary_js-master/js/jquery.ui.widget.js');
+app.import('vendor/cloudinary_js-master/js/jquery.iframe-transport.js');
+app.import('vendor/cloudinary_js-master/js/jquery.fileupload.js');
+app.import('vendor/cloudinary_js-master/js/jquery.cloudinary.js');
 
 
 module.exports = app.toTree();

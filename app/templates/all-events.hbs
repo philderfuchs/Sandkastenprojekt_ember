@@ -2,8 +2,8 @@
     {{#each event in filteredEvents}}
 
         {{#if event.id}}
-            <section class="event">
-                {{{get-state event.city event.state}}}
+            <section class="event" style="background-image:url({{unbound event.imageURL}})">
+                {{{get-state event.city event.state event.imageURL}}}
                 <div class="event-content">
                     <div class=title-container>
                         <span class="title">{{event.title}}</span>
