@@ -5,6 +5,7 @@ import StateEnum from '../models/stateEnum';
 export default Ember.ArrayController.extend({
     queryParams: ['state'],
     state: [],
+    needs: "application",
     filteredEvents: Ember.computed(
         'state',
         function () {

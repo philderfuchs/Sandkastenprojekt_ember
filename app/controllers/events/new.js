@@ -2,7 +2,7 @@ import Ember from 'ember';
 import StateEnum from '../../models/stateEnum';
 
 export default Ember.ObjectController.extend({
-    _tags: [],
+      _tags: [],
     allStatesAsList: (function () {
         var array = [];
         for (var key in StateEnum) {

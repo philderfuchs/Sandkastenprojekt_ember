@@ -1,8 +1,7 @@
 <section class="create-event">
-	<div class="outer-container">
 		<fieldset>
 			<form {{action "createEvent" on="submit"}}>
-				<h1>Heard about an Event? Share it!</h1><br>
+				<div class="heading">SHARE A BATTLE OR WORKSHOP WITH THE COMMUNITY</div><br>
 
 				<div class="name-box">
 					<span class="field-description">Name</span>
@@ -31,10 +30,9 @@
           {{cloudinary-thumbnail model.imageURL}}
         </div>
 				<div class="share-event">
-					<button id="create-button" type="submit">Share!</button>
-					<button {{action "cancel"}}>Cancel</button>
+					<button class="add-event-button" type="submit">Share <i class="fa fa-plus"></i></button>
+					<button class="cancel-button" {{action "cancel"}}>Cancel  <i class="fa fa-close"></i></button>
 				</div>
 			</form>
 		</fieldset>
-	</div>
 </section>

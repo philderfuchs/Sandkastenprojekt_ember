@@ -29,7 +29,7 @@ $stateThueringenColor: #61AE5B;
 $navigationColor: #333;
 
 @mixin setStateBackground($color) {
-  background-color: transparentize($color, 0.3);
+  background-color: $color;
 }
 
 @mixin vertical-align {
@@ -127,38 +127,37 @@ header {
     @include media($mobile) {
 
       height: 9vh;
-
+      line-height: 9vh;
       background-color: $navigationColor;
+      border-bottom: 2px #DDD solid;
 
     }
     padding: 3px;
     margin: 0px auto;
 
-    button {
+    a {
       @include media($mobile) {
         font-size: 3vh;
       }
 
-
       height: 100%;
-      background-color: #404040;
-      border: 1px black solid;
       color: transparentize(white, 0.3);
       font-family: open_sanslight;
       font-size: 18px;
-      &:hover {
-        background-color: lighten(#404040, 10%);
-      }
 
-      &.showMap{
+      &.showMap {
         @include media($mobile) {
           display: block;
+          float: left;
+          margin-left: 15px;
         }
-        display:none;
-        float:left;
+        display: none;
       }
-      &.addEvent{
-        float:right;
+      &.addEvent {
+        @include media($mobile) {
+          margin-right: 15px;
+        }
+        float: right;
       }
 
     }
@@ -171,14 +170,6 @@ header {
   @include outer-container;
 
   background-color: white;
-
-  &.blurred {
-    filter: blur(10px); /* Someday, sigh ... */
-    -webkit-filter: blur(10px); /* Prefixed CSS3 blur filters */
-    -moz-filter: blur(10px);
-    -o-filter: blur(10px);
-    -ms-filter: blur(10px);
-  }
 
   .event {
 
@@ -238,7 +229,7 @@ header {
         padding: 0.3em 0.6em;
         z-index: 2;
 
-        .city{
+        .city {
           font-family: open_sanslight;
         }
 
@@ -337,7 +328,7 @@ header {
   }
 }
 
-.map-wrapper{
+.map-wrapper {
   @include outer-container();
 
   @include media($mobile) {
@@ -345,13 +336,13 @@ header {
     padding: 0;
 
   }
-    margin-top: 30px;
+  margin-top: 30px;
   margin-bottom: 30px;
   padding: 10px;
 
   border: 1px #CCC solid;
 
-  .explanation-wrapper{
+  .explanation-wrapper {
     @include span-columns(4);
     @include omega();
 
@@ -360,7 +351,7 @@ header {
     }
 
     @include media($mobile) {
-      display:none;
+      display: none;
     }
 
     text-align: center;
@@ -370,12 +361,13 @@ header {
     font-family: open_sanslight;
     color: #888;
 
-    .explanation-inner{
+    .explanation-inner {
       margin: auto 5px;
     }
 
   }
 }
+
 .map {
   @include span-columns(6);
 
@@ -405,12 +397,12 @@ header {
     position: absolute;
     right: 30px;
     top: 5px;
-    &:hover{
+    &:hover {
       color: transparentize(white, 0.5);
     }
   }
 
-  .svg-wrapper{
+  .svg-wrapper {
     float: right;
     @include media($mobile) {
       float: none;
@@ -475,91 +467,107 @@ header {
 section.create-event {
 
   $field-height: 32px;
+  @include outer-container;
 
-  .outer-container {
-    @include outer-container;
+  @include media($mobile) {
+    height: 91.1vh;
+    width: 100%;
+    position: absolute;
+    overflow: auto;
+    bottom: 0;
+    z-index: 4;
+    background-color: #f7f7f7;
+  }
 
-    .event {
-      @include span-columns(4);
-      @include shift(4);
+  .event {
+    @include span-columns(4);
+    @include shift(4);
+    @include omega();
+    margin-bottom: 2em;
+
+  }
+
+  fieldset {
+    border:none;
+
+    .heading {
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .name-box {
+      @include span-columns(6);
+      @include media($tablet) {
+        @include span-columns(12);
+        @include omega();
+      }
+    }
+
+    .date-box {
+      @include span-columns(2);
+      @include media($tablet) {
+        @include span-columns(4);
+      }
+      @include media($mobile) {
+        @include span-columns(12);
+      }
+    }
+
+    .city-box {
+      @include span-columns(2);
+      @include media($tablet) {
+        @include span-columns(4);
+      }
+      @include media($mobile) {
+        @include span-columns(6);
+      }
+    }
+
+    .state-box {
+      @include span-columns(2);
       @include omega();
-      margin-bottom: 2em;
+      @include media($tablet) {
+        @include span-columns(4);
+        @include omega();
+
+      }
+      @include media($mobile) {
+        @include span-columns(6);
+        @include omega();
+
+      }
+    }
+
+    .tag-row {
+
+      .tag-field {
+        @include span-columns(12);
+        @include omega;
+
+        .select2-container {
+          @extend input;
+          .select2-choices {
+            border: 1px solid #ddd;
+            border-radius: 3px;
+          }
+
+          .select2-search-choice {
+            margin: 1px;
+            background-color: white;
+            line-height: inherit;
+            background-image: none
+          }
+          .select2-search-choice-close {
+            top: 8px;
+          }
+        }
+      }
 
     }
 
-    fieldset {
-
-      .name-box {
-        @include span-columns(6);
-        @include media($tablet) {
-          @include span-columns(12);
-          @include omega();
-        }
-      }
-
-      .date-box {
-        @include span-columns(2);
-        @include media($tablet) {
-          @include span-columns(4);
-        }
-        @include media($mobile) {
-          @include span-columns(12);
-        }
-      }
-
-      .city-box {
-        @include span-columns(2);
-        @include media($tablet) {
-          @include span-columns(4);
-        }
-        @include media($mobile) {
-          @include span-columns(6);
-        }
-      }
-
-      .state-box {
-        @include span-columns(2);
-        @include omega();
-        @include media($tablet) {
-          @include span-columns(4);
-          @include omega();
-
-        }
-        @include media($mobile) {
-          @include span-columns(6);
-          @include omega();
-
-        }
-      }
-
-      .tag-row {
-
-        .tag-field {
-          @include span-columns(12);
-          @include omega;
-
-          .select2-container {
-            @extend input;
-
-            .select2-search-choice {
-              margin: 1px;
-              background-color: white;
-              line-height: inherit;
-              background-image: none
-            }
-            .select2-search-choice-close {
-              top: 8px;
-            }
-          }
-        }
-
-      }
-
-      .share-event {
-        @include fill-parent();
-        @include row(table);
-      }
-
+    .share-event {
+      @include fill-parent();
+      @include row(table);
     }
 
   }
@@ -571,8 +579,11 @@ section.create-event {
 
   select {
     margin: 0;
-    width: 100%;
+    background: white;
+    height: 32px;
+    border: 1px solid #ddd;
   }
+
 
   .field-description {
     font-weight: bold;
@@ -585,6 +596,16 @@ section.create-event {
     background-color: white;
     border: 1px solid #ddd;
     color: gray;
+  }
+
+  .add-event-button {
+    float: right;
+  }
+
+  .cancel-button {
+    background: none;
+    color: grey;
+    border: 1px #ddd solid;
   }
 
 }
