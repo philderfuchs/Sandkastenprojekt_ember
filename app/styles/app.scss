@@ -129,7 +129,7 @@ header {
       height: 9vh;
       line-height: 9vh;
       background-color: $navigationColor;
-      border-bottom: 2px #DDD solid;
+      border-bottom: 2px #CCC solid;
 
     }
     padding: 3px;
@@ -171,110 +171,6 @@ header {
 
   background-color: white;
 
-  .event {
-
-    height: 20em;
-    position: relative;
-
-    &, .blurred-background {
-      //background: url('../meagaint.jpg');
-      background-position: top;
-      background-size: cover;
-    }
-
-    .event-content {
-      padding: 15px;
-      height: 100%;
-
-    }
-    .event-header-wrapper {
-
-      @include media($mobile) {
-        height: 9vh;
-      }
-
-      height: 45px;
-      overflow: hidden;
-      position: relative;
-
-      .blurred-background {
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        bottom: 0px;
-        left: 0px;
-        filter: blur(5px); /* Someday, sigh ... */
-        -webkit-filter: blur(5px); /* Prefixed CSS3 blur filters */
-        -moz-filter: blur(5px);
-        -o-filter: blur(5px);
-        -ms-filter: blur(5px);
-        z-index: 1;
-      }
-
-      .event-header {
-
-        @include media($mobile) {
-          font-size: 4vh;
-          padding: 0.6em 0.6em;
-          line-height: 3.5vh;
-
-        }
-
-        height: 100%;
-        position: relative;
-        line-height: 1.1em;
-        text-align: right;
-        color: white;
-        font-size: 1em;
-        padding: 0.3em 0.6em;
-        z-index: 2;
-
-        .city {
-          font-family: open_sanslight;
-        }
-
-      }
-    }
-
-    .title {
-
-      @include media($mobile) {
-        font-size: 13.5vh;
-      }
-
-      font-family: "bebas_neuebook";
-      background: rgba(black, 0.7);
-      color: white;
-      font-size: 3em;
-      line-height: initial;
-    }
-
-    .date {
-      @include media($mobile) {
-        font-size: 8vh;
-      }
-
-      font-family: "bebas_neuebook";
-      background: rgba(black, 0.7);
-      color: white;
-      font-size: 2em;
-    }
-
-    .tag-container {
-      position: absolute;
-      bottom: 15px;
-
-      .badge-tag {
-        @include media($mobile) {
-          font-size: 2.5vh;
-          border-radius: 5px;
-        }
-        border: 1px solid #777;
-      }
-
-    }
-  }
-
   .events {
     //@include span-columns(8);
 
@@ -292,41 +188,144 @@ header {
       bottom: 0;
     }
 
-    .event {
+  }
+}
 
-      margin-bottom: 2em;
+.event {
 
-      @include media($screen) {
-        @include span-columns(3);
-        @include omega(4n);
-      }
-      @include media($tablet) {
-        @include span-columns(4);
-        @include omega(3n);
-      }
+  height: 20em;
+  position: relative;
+  margin-bottom: 2em;
+  background-color: white;
 
-      @include media($smartlet) {
-        @include span-columns(6);
-        @include omega(2n);
-      }
+  @include media($screen) {
+    @include span-columns(3);
+    @include omega(4n);
+  }
+  @include media($tablet) {
+    @include span-columns(4);
+    @include omega(3n);
+  }
+
+  @include media($smartlet) {
+    @include span-columns(6);
+    @include omega(2n);
+  }
+
+  @include media($mobile) {
+    @include span-columns(12);
+    @include omega();
+
+    //height: 92vh;
+    margin-bottom: 0 !important;
+
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+
+  }
+
+  &, .blurred-background {
+    //background: url('../meagaint.jpg');
+    background-position: top;
+    background-size: cover;
+  }
+
+  .event-content {
+    padding: 15px;
+    height: 100%;
+
+  }
+  .event-header-wrapper {
+
+    @include media($mobile) {
+      height: 9vh;
+    }
+
+    height: 45px;
+    overflow: hidden;
+    position: relative;
+
+    .blurred-background {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      filter: blur(5px); /* Someday, sigh ... */
+      -webkit-filter: blur(5px); /* Prefixed CSS3 blur filters */
+      -moz-filter: blur(5px);
+      -o-filter: blur(5px);
+      -ms-filter: blur(5px);
+      z-index: 1;
+    }
+
+    .event-header {
 
       @include media($mobile) {
-        @include span-columns(12);
-        @include omega();
+        font-size: 4vh;
+        padding: 0.6em 0.6em;
+        line-height: 3.5vh;
 
-        //height: 92vh;
-        margin-bottom: 0 !important;
+      }
 
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        height: 100%;
+      height: 100%;
+      position: relative;
+      line-height: 1.1em;
+      text-align: right;
+      color: white;
+      font-size: 1em;
+      padding: 0.3em 0.6em;
+      z-index: 2;
 
+      .city {
+        font-family: open_sanslight;
       }
 
     }
   }
+
+  .title {
+
+    @include media($mobile) {
+      font-size: 13.5vh;
+    }
+
+    font-family: "bebas_neuebook";
+    background: rgba(black, 0.7);
+    color: white;
+    font-size: 3em;
+    line-height: initial;
+  }
+
+  .date {
+    @include media($mobile) {
+      font-size: 8vh;
+    }
+
+    font-family: "bebas_neuebook";
+    background: rgba(black, 0.7);
+    color: white;
+    font-size: 2em;
+  }
+
+  .tag-container {
+    position: absolute;
+    bottom: 15px;
+
+    .badge-tag {
+      @include media($mobile) {
+        font-size: 2.5vh;
+        border-radius: 5px;
+      }
+      border: 1px solid #777;
+    }
+
+  }
 }
+
+//
 
 .map-wrapper {
   @include outer-container();
@@ -334,6 +333,7 @@ header {
   @include media($mobile) {
     border: none;
     padding: 0;
+    margin: 0;
 
   }
   margin-top: 30px;
@@ -470,30 +470,40 @@ section.create-event {
   @include outer-container;
 
   @include media($mobile) {
+
     height: 91.1vh;
     width: 100%;
     position: absolute;
     overflow: auto;
     bottom: 0;
     z-index: 4;
-    background-color: #f7f7f7;
+    background-color: $navigationColor;
   }
 
-  .event {
-    @include span-columns(4);
-    @include shift(4);
-    @include omega();
-    margin-bottom: 2em;
-
-  }
-
-  fieldset {
-    border:none;
 
     .heading {
       font-weight: bold;
       text-align: center;
+      color: transparentize(white, 0.3);
+      margin-bottom: 20px;
+      margin-top: 20px;
     }
+
+    .preview-box{
+      @include span-columns(12);
+      @include omega();
+    }
+
+    .add-box {
+      @include span-columns(12);
+      @include omega();
+
+      padding: 10px;
+      margin: 10px 0;
+
+    }
+
+  fieldset {
 
     .name-box {
       @include span-columns(6);
@@ -538,36 +548,39 @@ section.create-event {
       }
     }
 
-    .tag-row {
+    .tag-box {
 
-      .tag-field {
         @include span-columns(12);
         @include omega;
+        margin-bottom: 10px;
 
         .select2-container {
           @extend input;
-          .select2-choices {
+
+        .select2-choices {
+          @extend input;
+          background: white;
+
             border: 1px solid #ddd;
             border-radius: 3px;
+            .select2-input {
+              // background: white !important;
+            }
+      }
           }
 
-          .select2-search-choice {
+        .select2-search-choice {
             margin: 1px;
             background-color: white;
             line-height: inherit;
             background-image: none
-          }
+        }
           .select2-search-choice-close {
             top: 8px;
           }
-        }
-      }
 
-    }
 
-    .share-event {
-      @include fill-parent();
-      @include row(table);
+
     }
 
   }
@@ -584,7 +597,6 @@ section.create-event {
     border: 1px solid #ddd;
   }
 
-
   .field-description {
     font-weight: bold;
     font-size: small;
@@ -599,13 +611,14 @@ section.create-event {
   }
 
   .add-event-button {
-    float: right;
+    width: 100%;
+    margin-bottom: 10px;
   }
 
-  .cancel-button {
-    background: none;
-    color: grey;
-    border: 1px #ddd solid;
+  .cancel {
+    color: transparentize(white, 0.3);
+    display: inline-block;
+    padding: 5px;
   }
 
 }

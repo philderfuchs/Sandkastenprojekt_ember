@@ -11,9 +11,19 @@ export default Ember.ObjectController.extend({
         return array;
     }).property(),
 
+    newDate: new Date(),
+
     allTagsByNames: function () {
         return this.store.all('tag').mapBy('name');
     }.property(),
+
+    styleBackgroundImage: function(){
+        return "background-image:url('" + this.get('model').get('imageURL') + "');height:91.1vh";
+    }.property('model.imageURL'),
+
+    finalDate: function(){
+      return new Date(this.get('newDate'));
+    }.property('newDate'),
 
     actions: {
         addTag(name) {
@@ -25,15 +35,7 @@ export default Ember.ObjectController.extend({
         createEvent() {
             var _this = this;
 
-            var date = this.get('newDate');
-            if (date) {
-                date = new Date(date);
-            } else {
-                date = new Date();
-            }
-
-            this.get('model').set('date', date);
-
+            this.set('model.date', this.get('finalDate'));
 
             this.get('_tags').forEach(function (name) {
                 _this.get('model').get('tags').createRecord({name: name});

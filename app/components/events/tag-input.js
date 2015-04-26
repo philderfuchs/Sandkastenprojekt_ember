@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    tagName: 'input',
-
     placeholder: null, // passed in
     tags: null, //
 

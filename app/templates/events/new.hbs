@@ -1,8 +1,8 @@
 <section class="create-event">
-		<fieldset>
 			<form {{action "createEvent" on="submit"}}>
-				<div class="heading">SHARE A BATTLE OR WORKSHOP WITH THE COMMUNITY</div><br>
 
+				<div class="heading">SHARE A BATTLE OR WORKSHOP WITH THE COMMUNITY</div>
+				<fieldset>
 				<div class="name-box">
 					<span class="field-description">Name</span>
                   {{input type="text" placeholder="Whats the name of the event?" value=model.title}}
@@ -19,20 +19,39 @@
 					<span class="field-description">State</span>
                   {{view "select" content=controller.allStatesAsList optionValuePath="content.key" optionLabelPath="content.value" value=model.state}}
 				</div>
-				<div class="tag-row">
-					<div class="tag-field">
+				<div class="tag-box">
 						<span class="field-description">Tags</span><br>
-                      {{events/tag-input placeholder="put your tags here..." tags=allTagsByNames addTag="addTag" removeTag="removeTag"}}
-					</div>
+                      {{events/tag-input placeholder="" tags=allTagsByNames addTag="addTag" removeTag="removeTag"}}
 				</div>
-				<div>
+				<div class="cloudinary-box">
+					<span class="field-description">Event flyer</span>
           {{view 'cloudinary'}}
-          {{cloudinary-thumbnail model.imageURL}}
         </div>
-				<div class="share-event">
+			</fieldset>
+
+				<div class="preview-box">
+					<div class="heading">PREVIEW OF YOUR EVENT</div>
+					<section class="event" {{bind-attr  style="styleBackgroundImage"}}>
+							{{{get-state model.city model.state model.imageURL}}}
+							<div class="event-content">
+									<div class=title-container>
+											<span class="title">{{model.title}}</span>
+									</div>
+									<div class=date-container>
+											<span class="date">{{format-date finalDate}}</span>
+									</div>
+									<div class="tag-container">
+											{{#each _tags}}
+													<span class="badge-tag">{{this}}</span>
+											{{/each}}
+									</div>
+							</div>
+					</section>
+				</div>
+
+				<div class="add-box">
 					<button class="add-event-button" type="submit">Share <i class="fa fa-plus"></i></button>
-					<button class="cancel-button" {{action "cancel"}}>Cancel  <i class="fa fa-close"></i></button>
+					<span class="cancel" {{action "cancel"}}>Cancel  <i class="fa fa-close"></i></span>
 				</div>
 			</form>
-		</fieldset>
 </section>
